@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     override fun onContextItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.add_to_queue -> {
-                Toast.makeText(this, "Added to Queue", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Added to Queues", Toast.LENGTH_SHORT).show()
                 val info = item.menuInfo as AdapterContextMenuInfo
                 selectedSong.add(productsArray[info.position])
                 true
