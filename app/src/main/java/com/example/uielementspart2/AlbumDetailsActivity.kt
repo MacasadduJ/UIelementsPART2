@@ -21,17 +21,17 @@ class AlbumDetailsActivity : AppCompatActivity() {
         var albumSongs :Array<String> =arrayOf()
         val position = intent.extras!!.getString("position")
 
-        if (position.equals("Shrek1")){
+        if (position.equals("Shrek 1")){
             viewName.text = position
             viewImage.setImageResource(R.drawable.shrek1)
             albumSongs = arrayOf("I'm a believer", "All Star", "I'm on my way", "My beloved monster", "Hallelujah")
         }
-        else if (position.equals("Shrek2")){
+        else if (position.equals("Shrek 2")){
             viewName.text = position
             viewImage.setImageResource(R.drawable.shrek2)
             albumSongs = arrayOf("Accidentally in Love", "Holding Out for a Hero", "Hello World", "Livin' la Vida Loca", "Funkytown", "Changes")
         }
-        else if (position.equals("Shrek3")){
+        else if (position.equals("Shrek 3")){
             viewName.text = position
             viewImage.setImageResource(R.drawable.shrek3)
             albumSongs = arrayOf("What I've Done", "Final Showdown", "This Moment", "Do You Remember Rock 'n' Roll Radio?",

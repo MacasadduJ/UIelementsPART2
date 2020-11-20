@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class AlbumActivity : AppCompatActivity() {
-    var names = arrayOf("Shrek1" , "Shrek2" , "Shrek3")
+    var names = arrayOf("Shrek 1" , "Shrek 2" , "Shrek 3")
     var images = intArrayOf(R.drawable.shrek1 , R.drawable.shrek2 , R.drawable.shrek3)
 
     override fun onCreate(savedInstanceState: Bundle?) {
