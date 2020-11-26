@@ -1,16 +1,22 @@
 package com.example.uielementspart2
 
-import android.annotation.SuppressLint
+
+import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.ListView
-import android.widget.TextView
+import android.view.ContextMenu
+import android.view.MenuItem
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.get
+import kotlinx.android.synthetic.main.activity_album_details.*
+
 
 class AlbumDetailsActivity : AppCompatActivity() {
 
-    @SuppressLint("ResourceType")
+    private var adapter: ArrayAdapter<String>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_album_details)
@@ -40,5 +46,47 @@ class AlbumDetailsActivity : AppCompatActivity() {
         var adapter = ArrayAdapter(this , android.R.layout.simple_list_item_1 , albumSongs)
         var albumDetailListView = findViewById<ListView>(R.id.albumDetailListView)
         albumDetailListView.adapter = adapter
+        registerForContextMenu(albumDetailListView)
+}
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?)
+    {
+        super.onCreateContextMenu(menu,v,menuInfo)
+        val inflater = menuInflater
+        inflater.inflate(R.menu.album_list_menu, menu)
     }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.delete_item -> {
+                val intent = intent
+                val position = intent.extras!!.getInt("position")
+                val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
+                val dialogBuilder = AlertDialog.Builder(this)
+                dialogBuilder.setMessage("Remove song from album?")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", DialogInterface.OnClickListener{ dialog, which ->
+                        if(position == 0){
+                            selectedSong.removeAt(info.position)
+                        }
+                        else if(position == 1){
+                            selectedSong.removeAt(info.position)
+                        }
+                        else {
+                           selectedSong.removeAt(info.position)
+                        }
+                        adapter?.notifyDataSetChanged()
+                    })
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener{
+                            dialog, which ->
+                    })
+                val alert = dialogBuilder.create()
+                alert.setTitle("Album Dialog")
+                alert.show()
+            }
+        }
+        return super.onContextItemSelected(item)
+    }
+
+
 }
