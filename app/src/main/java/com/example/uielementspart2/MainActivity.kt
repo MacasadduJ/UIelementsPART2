@@ -14,11 +14,12 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.uielementspart2.models.Song
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-var selectedSong = arrayListOf<String>()
-val productsArray = arrayOf(
+var selectedSong = mutableListOf<String>()
+val productsArray = mutableListOf(
         "Im a believer",
         "All Star",
         "I'm On My Way",
@@ -34,7 +35,6 @@ val productsArray = arrayOf(
         "This Moment",
         "Do You Remember Rock 'n' Roll Radio?",
         "Live and Let Die"
-
 )
 
 class MainActivity : AppCompatActivity() {
@@ -71,6 +71,10 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(applicationContext,QueueActivity::class.java))
                 })
                 snackbar.show()
+                true
+            }
+            R.id.add_new_song ->{
+                startActivity(Intent(this, CreateSongsActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

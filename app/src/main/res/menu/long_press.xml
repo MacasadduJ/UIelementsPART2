@@ -3,4 +3,6 @@
 
     <item android:id="@+id/add_to_queue"
         android:title="Add To Queues"></item>
+    <item android:id="@+id/add_new_song"
+        android:title="Add new song"></item>
 </menu>
